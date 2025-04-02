@@ -1,12 +1,21 @@
+import Button from "./components/button";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
 function index() {
   return (
+<<<<<<< HEAD
     <div>
       <Navbar />
       <Footer/>
     </div>
+=======
+    <>
+      <div>
+        <Navbar />
+      </div>
+    </>
+>>>>>>> main
   );
 }
 
