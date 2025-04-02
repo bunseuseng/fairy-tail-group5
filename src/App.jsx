@@ -1,9 +1,11 @@
 import Navbar from "./components/navbar";
+import MyButton from "./components/button";
 
 function index() {
   return (
     <div>
       <Navbar />
+      <MyButton />
     </div>
   );
 }
