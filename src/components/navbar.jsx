@@ -105,11 +105,18 @@
 // }
 import { useState } from "react";
 import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
   const [dropdownOpen, setDropdownOpen] = useState(false); // Story dropdown state
+  const [activeMenu, setActiveMenu] = useState("Home"); // Active menu state
+
+  const handleMenuClick = (menu) => {
+    setActiveMenu(menu);
+    if (menu !== "Story") setDropdownOpen(false); // Close dropdown if another menu is clicked
+  };
 
   return (
     <nav className="bg-white shadow-md px-4 sm:px-6 lg:px-8 w-full">
@@ -121,7 +128,7 @@ export default function Navbar() {
 
         {/* Centered Menu */}
         <div className="absolute left-1/2 transform -translate-x-1/2 hidden lg:flex space-x-6 items-center">
-          <a href="#" className="text-purple-800 hover:text-purple-600">
+          <a href="" className="text-purple-800 hover:text-purple-600">
             Home
           </a>
 
@@ -189,15 +196,26 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="lg:hidden flex flex-col space-y-4 pb-4 border-t pt-4">
-          <a href="#" className="text-purple-800 hover:text-purple-600">
+          <a
+            href="#"
+            className={`text-purple-800 hover:text-purple-600 ${
+              activeMenu === "Home" ? "border-b-2 border-purple-800" : ""
+            }`}
+            onClick={() => handleMenuClick("Home")}
+          >
             Home
           </a>
 
           {/* Mobile Dropdown for Story */}
           <div className="relative">
             <button
-              className="flex items-center text-purple-800 hover:text-purple-500 transition duration-300 w-full"
-              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className={`flex items-center text-purple-800 hover:text-purple-500 transition duration-300 w-full ${
+                activeMenu === "Story" ? "border-b-2 border-purple-800" : ""
+              }`}
+              onClick={() => {
+                handleMenuClick("Story");
+                setDropdownOpen(!dropdownOpen);
+              }}
             >
               Story <ChevronDown size={16} className="ml-1" />
             </button>
@@ -206,18 +224,21 @@ export default function Navbar() {
                 <a
                   href="#"
                   className="block text-purple-800 hover:text-purple-500"
+                  onClick={() => handleMenuClick("Classic Tales")}
                 >
                   Classic Tales
                 </a>
                 <a
                   href="#"
                   className="block text-purple-800 hover:text-purple-500"
+                  onClick={() => handleMenuClick("Mythology")}
                 >
                   Mythology
                 </a>
                 <a
                   href="#"
                   className="block text-purple-800 hover:text-purple-500"
+                  onClick={() => handleMenuClick("Fantasy")}
                 >
                   Fantasy
                 </a>
@@ -225,7 +246,13 @@ export default function Navbar() {
             )}
           </div>
 
-          <a href="#" className="text-purple-800 hover:text-purple-600">
+          <a
+            href="#"
+            className={`text-purple-800 hover:text-purple-600 ${
+              activeMenu === "Favorite" ? "border-b-2 border-purple-800" : ""
+            }`}
+            onClick={() => handleMenuClick("Favorite")}
+          >
             Favorite
           </a>
           <button className="bg-purple-900 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition duration-300">

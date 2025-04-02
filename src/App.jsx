@@ -1,10 +1,13 @@
+import Button from "./components/button";
 import Navbar from "./components/navbar";
 
 function index() {
   return (
-    <div>
-      <Navbar />
-    </div>
+    <>
+      <div>
+        <Navbar />
+      </div>
+    </>
   );
 }
 
