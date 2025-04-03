@@ -1,17 +1,25 @@
-import Button from "./components/button";
-import Navbar from "./components/navbar";
+// import React from "react";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import HomePage from "./page/home";
+// import FavoritePage from "./page/favorite";
+// import Navbar from "./components/navbar";
+// // import { Routes } from "react-router";
 
-function index() {
-  return (
-    <>
-      <div>
-        <Navbar />
-      </div>
-    </>
-  );
-}
+// function App() {
+//   return (
+//     <Router>
+//       <Navbar />
+//       <Routes>
+//         <Route path="/" element={<HomePage />} />
+//         <Route path="/story" element={<StoryPage />} />
 
-export default index;
+//         <Route path="/favorite" element={<FavoritePage />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// export default App;
 
 // import { useState } from "react";
 // import reactLogo from "./assets/react.svg";

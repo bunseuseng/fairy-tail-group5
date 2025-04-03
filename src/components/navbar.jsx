@@ -128,7 +128,7 @@ export default function Navbar() {
 
         {/* Centered Menu */}
         <div className="absolute left-1/2 transform -translate-x-1/2 hidden lg:flex space-x-6 items-center">
-          <a href="" className="text-purple-800 hover:text-purple-600">
+          <a href="/" className="text-purple-800 hover:text-purple-600">
             Home
           </a>
 
@@ -157,7 +157,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <a href="#" className="text-purple-800 hover:text-purple-600">
+          <a href="" className="text-purple-800 hover:text-purple-600">
             Favorite
           </a>
 
