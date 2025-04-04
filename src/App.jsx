@@ -1,17 +1,21 @@
-import Button from "./components/button";
-import Navbar from "./components/navbar";
 
-function index() {
+import Navbar from "./components/navbar";
+// import Login from "./page/login";
+import Button from "./components/button";
+import './App.css'
+function App() {
   return (
     <>
       <div>
         <Navbar />
+        {/* <Login /> */}
+        <Button />
       </div>
     </>
   );
 }
 
-export default index;
+export default App;
 
 // import { useState } from "react";
 // import reactLogo from "./assets/react.svg";
