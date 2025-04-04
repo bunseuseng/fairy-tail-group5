@@ -1,14 +1,11 @@
 import React from "react";
 
-import Navbar from "../components/navbar";
-// import { Route } from "react-router";
-
-const FavoritePage = () => {
+const Favorite = () => {
   return (
-    <div>
-      <Navbar />
-    </div>
+    <section>
+      <h1> this is Favorite</h1>
+    </section>
   );
 };
 
-export default FavoritePage;
+export default Favorite;
