@@ -127,21 +127,27 @@ export default function Navbar() {
     <>
       <Link
         to="/"
-        className={`text-purple-800 hover:text-purple-500 transition duration-300 ${mobile ? "" : "mr-6"}`}
+        className={`text-purple-800 hover:text-purple-500 transition duration-300 ${
+          mobile ? "" : "mr-6"
+        }`}
       >
         Home
       </Link>
 
       <Link
         to="/story"
-        className={`text-purple-800 hover:text-purple-500 transition duration-300 ${mobile ? "" : "mr-6"}`}
+        className={`text-purple-800 hover:text-purple-500 transition duration-300 ${
+          mobile ? "" : "mr-6"
+        }`}
       >
         Story
       </Link>
 
       <Link
         to="/favorite"
-        className={`text-purple-800 hover:text-purple-500 transition duration-300 ${mobile ? "" : "mr-6"}`}
+        className={`text-purple-800 hover:text-purple-500 transition duration-300 ${
+          mobile ? "" : "mr-6"
+        }`}
       >
         Favorite
       </Link>
@@ -163,13 +169,17 @@ export default function Navbar() {
     <>
       <Link
         to="/login"
-        className={`bg-purple-800 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition duration-300 ${mobile ? "w-full text-center" : ""}`}
+        className={`bg-purple-800 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition duration-300 ${
+          mobile ? "w-full text-center" : ""
+        }`}
       >
         Login
       </Link>
       <Link
         to="/register"
-        className={`text-purple-800 hover:text-purple-600 ${mobile ? "w-full text-center" : "ml-2"}`}
+        className={`text-purple-800 hover:text-purple-600 ${
+          mobile ? "w-full text-center" : "ml-2"
+        }`}
       >
         Register
       </Link>

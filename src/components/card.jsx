@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.png";
 
 const card = () => {
   return (
-    <div className=" w-3xs shadow-lg rounded m-10 ">
+    <div className=" w-3xs shadow-lg rounded mt-5">
       <img
         src={logo}
         alt="Logo"
