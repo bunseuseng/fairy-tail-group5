@@ -47,7 +47,7 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="bg-white shadow-md px-6 lg:px-12 w-full">
+    <nav className="bg-white shadow-md px-6 lg:px-12 w-full ">
       <div className="flex justify-between items-center py-4">
         <Link to="/" className="flex items-center space-x-2">
           <img src={logo} alt="Mystic Melody" className="h-12" />
