@@ -10,7 +10,7 @@ export default function Navbar() {
     <div className={`flex ${mobile ? "flex-col space-y-4" : "space-x-8"}`}>
       <Link
         to="/"
-        className="text-purple-800 hover:text-purple-600 text-lg font-medium transition duration-300"
+        className="text-purple-800 hover:text-purple-600 text-lg font-medium transition duration-300 "
       >
         Home
       </Link>
@@ -47,10 +47,10 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="bg-white shadow-md px-6 lg:px-12 w-full ">
+    <nav className="bg-white shadow-md px-6 lg:px-15 w-full ">
       <div className="flex justify-between items-center py-4">
         <Link to="/" className="flex items-center space-x-2">
-          <img src={logo} alt="Mystic Melody" className="h-12" />
+          <img src={logo} alt="Mystic Melody" className="h-15" />
         </Link>
         <div className="hidden lg:flex flex-1 justify-center">
           <MenuLinks />
