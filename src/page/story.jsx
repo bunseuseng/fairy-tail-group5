@@ -1,10 +1,12 @@
 import React from "react";
+import Form from "../api/StoryFilterForm";
 
 const Favorites = () => {
   return (
-    <section className="p-6 bg-gray-100 rounded-lg shadow-md text-center">
-      <h1 className="text-2xl font-bold text-gray-800">This is Favorites</h1>
-    </section>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <h1 className="text-3xl font-bold mb-4">Favorite Stories</h1>
+      <Form />
+    </div>
   );
 };
 
