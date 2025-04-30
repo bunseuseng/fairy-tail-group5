@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import axios from "axios";
+import background from "../assets/images/register-bg.png"; // Import the background image
 
 function RegisterPage() {
   const [username, setUsername] = useState("");
@@ -80,7 +81,10 @@ function RegisterPage() {
   );
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover bg-center p-4"
+      style={{ backgroundImage: `url(${background})` }} // Background image applied here
+    >
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
         <h1 className="text-3xl font-bold">Create Account</h1>
         <p className="text-sm mt-2 text-gray-600">7 days free, cancel anytime</p>

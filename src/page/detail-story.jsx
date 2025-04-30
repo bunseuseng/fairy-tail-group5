@@ -30,15 +30,28 @@ const StoryViewer = () => {
 
   return (
     <>
-      <h2>{story.title}</h2>
-      <p>{story.summary}</p>
-      <img src={story.cover_image?.url} alt="Story Cover" width="200" />
-      <audio controls>
-        <source src={story.audio?.url} type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-      <div className="">
-        <div dangerouslySetInnerHTML={{ __html: story.content }} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 justify-items-center items-center mx-30 m-10">
+        <div className="px-15 pb-10">
+          <h2 className="text-4xl font-bold font-serif text-[#2E014F] my-5">
+            {story.title}
+          </h2>
+          <p className="font-serif text-[#4D4848] text-lg">{story.summary}</p>
+          <audio controls className="mt-5">
+            <source src={story.audio?.url} type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <div className="inline-block m-4">
+          <img
+            className="w-60 rounded-lg shadow-lg transform rotate-20 hover:rotate-0 hover:scale-105 transition duration-300 ease-in-out"
+            src={story.cover_image?.url}
+            alt="Story Cover"
+            width="200"
+          />
+        </div>
+      </div>
+      <div className="justify-items-center items-center mx-30 m-20 font-serif">
+        <div className="" dangerouslySetInnerHTML={{ __html: story.content }} />
       </div>
     </>
   );
