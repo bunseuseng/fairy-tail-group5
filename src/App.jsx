@@ -6,6 +6,7 @@ import Favorite from "./page/favorite";
 import Story from "./page/story";
 import Login from "./page/login";
 import Register from "./page/register";
+import Detail from "./page/detail-story";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/story/:documentId" element={<Detail />} />
         </Routes>
       </main>
       <Footer />

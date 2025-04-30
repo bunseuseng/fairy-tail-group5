@@ -10,31 +10,34 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Toggle between local or live backend
+  const API_URL = "http://localhost:1337/api/auth/local"; // Change to live if needed
+  // const API_URL = "http://62.72.46.248:1337/api/auth/local";
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     setMessage("");
 
     try {
-      const response = await axios.post(
-        "http://62.72.46.248:1337/api/auth/local",
-        {
-          identifier,
-          password,
-        }
-      );
+      const response = await axios.post(API_URL, {
+        identifier,
+        password,
+      });
 
-      // console.log("Login successful:", response.data);
-      // setMessage(`Welcome ${response.data.user.username}!`);
+      // Save token or user info if needed
+      // localStorage.setItem("token", response.data.jwt);
+      // localStorage.setItem("user", JSON.stringify(response.data.user));
 
       // Redirect to homepage
       navigate("/");
     } catch (error) {
-      console.error(
-        "Login error:",
-        error.response?.data?.error?.message || error.message
-      );
-      setMessage("Login failed. Please check your credentials.");
+      console.error("Login error:", error);
+      const errorMsg =
+        error.response?.data?.error?.message ||
+        error.response?.data?.message ||
+        error.message;
+      setMessage(`Login failed: ${errorMsg}`);
     } finally {
       setLoading(false);
     }
@@ -125,13 +128,7 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Optional Social Login */}
-        {/* <div className="space-y-3">
-          <button className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-md hover:bg-gray-50 transition">
-            <img src="google-icon.svg" className="w-5 h-5 mr-2" alt="Google" />
-            Continue with Google
-          </button>
-        </div> */}
+        {/* Optional: Add social login buttons below */}
       </div>
     </div>
   );
