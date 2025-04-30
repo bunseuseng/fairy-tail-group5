@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/images/background.png";
 import axios from "axios";
@@ -10,9 +10,15 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Toggle between local or live backend
-  const API_URL = "http://localhost:1337/api/auth/local"; // Change to live if needed
-  // const API_URL = "http://62.72.46.248:1337/api/auth/local";
+  const API_URL = import.meta.env.VITE_API_URL || "http://62.72.46.248:1337/api/auth/local";
+
+  // ✅ Auto-redirect if token already exists
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/");
+    }
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,19 +31,25 @@ const Login = () => {
         password,
       });
 
-      // Save token or user info if needed
-      // localStorage.setItem("token", response.data.jwt);
-      // localStorage.setItem("user", JSON.stringify(response.data.user));
+      const { jwt, user } = response.data;
 
-      // Redirect to homepage
-      navigate("/");
+      if (jwt) {
+        localStorage.setItem("token", jwt);
+        localStorage.setItem("user", JSON.stringify(user));
+        navigate("/");
+      } else {
+        setMessage("Login failed: No token received from server.");
+      }
     } catch (error) {
       console.error("Login error:", error);
-      const errorMsg =
-        error.response?.data?.error?.message ||
-        error.response?.data?.message ||
-        error.message;
-      setMessage(`Login failed: ${errorMsg}`);
+
+      if (error.response) {
+        setMessage(`Login failed: ${error.response.data.error.message}`);
+      } else if (error.request) {
+        setMessage("Login failed: Unable to reach server. Make sure Strapi is running.");
+      } else {
+        setMessage(`Login failed: ${error.message}`);
+      }
     } finally {
       setLoading(false);
     }
@@ -60,10 +72,7 @@ const Login = () => {
 
         <form className="space-y-5" onSubmit={handleLogin}>
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
               Email Address
             </label>
             <input
@@ -78,10 +87,7 @@ const Login = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
               Password
             </label>
             <input
@@ -127,8 +133,6 @@ const Login = () => {
             <span className="bg-white px-2 text-gray-500">OR</span>
           </div>
         </div>
-
-        {/* Optional: Add social login buttons below */}
       </div>
     </div>
   );
